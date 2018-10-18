@@ -1,5 +1,6 @@
 package com.gad;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
@@ -42,9 +43,9 @@ public class Main {
                                 new GregorianCalendar(1999, 1, 1).getTime()));
                         list.add(new Student(4, "Ждан", "Жданович", "Жданов",
                                 "1111111", "Омск",
-                                "ФФФ", 1, 666999L,
+                                "ФФФ", 1, 999666L,
                                 new GregorianCalendar(1997, 1, 1).getTime()));
-                        list.add(new Student(3, "Захар", "Захарович", "Звхвров",
+                        list.add(new Student(3, "Захар", "Захарович", "Захаров",
                                 "1111111", "Омск",
                                 "ФФФ", 2, 666990L,
                                 new GregorianCalendar(2000, 1, 1).getTime()));
@@ -62,6 +63,35 @@ public class Main {
                             case "a": {
                                 String faculty = scanner.next();
                                 list.print(f -> f.getFaculty().equals(faculty.toUpperCase()));
+                                break;
+                            }
+                            case "b": {
+                                System.out.println("Факультеты");
+                                System.out.println("ФФФ:");
+                                list.print(f -> f.getFaculty().equals("ФФФ"));
+                                System.out.println("ФАК:");
+                                list.print(f -> f.getFaculty().equals("ФАК"));
+                                System.out.println();
+                                System.out.println("Курсы");
+                                System.out.println("1:");
+                                list.print(f->f.getCourse()==1);
+                                System.out.println("2:");
+                                list.print(f->f.getCourse()==2);
+                                break;
+                            }
+                            case "c": {
+                                int year = scanner.nextInt();
+                                list.print(f -> {
+                                    Calendar calendar = Calendar.getInstance();
+                                    calendar.setTime(f.getBirthday());
+                                    return calendar.get(Calendar.YEAR)>=year;
+                                });
+                                break;
+                            }
+                            case "d": {
+                                Long group = scanner.nextLong();
+                                list.print(f -> f.getGroup().equals(group));
+                                break;
                             }
                         }
                         break;
