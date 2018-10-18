@@ -27,6 +27,12 @@ public class PersonalInformation implements Person {
     }
 
     @Override
+    public int compareTo(Object o) {
+        Person s = (Person) o;
+        return this.getLastName().compareTo(s.getLastName());
+    }
+
+    @Override
     public int getId() {
         return id;
     }
@@ -88,6 +94,6 @@ public class PersonalInformation implements Person {
 
     @Override
     public String toString() {
-        return String.format("%4d",id) + "| " + firstName + middleName + lastName;
+        return String.format("%4d", id) + "| " + lastName + " " + firstName.charAt(0) + ". " + lastName.charAt(0) + ". ";
     }
 }

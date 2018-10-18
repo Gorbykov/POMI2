@@ -1,8 +1,6 @@
 package com.gad;
 
-public interface Person {
-
-
+public interface Person extends Comparable{
 
     int getId();
 

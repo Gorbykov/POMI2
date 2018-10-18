@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 public class ListPrinter<T> {
 
@@ -34,12 +35,13 @@ public class ListPrinter<T> {
     }
 
     public void print(Predicate<T> predicate){
-        System.out.println("-----------------");
+        System.out.println("----------------------------------");
         list.stream()
                 .filter(predicate)
+                .sorted()
                 .map(Objects::toString)
                 .forEach(System.out::println);
-        System.out.println("-----------------");
+        System.out.println("----------------------------------");
     }
 
 }
