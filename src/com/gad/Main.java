@@ -1,8 +1,8 @@
 package com.gad;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -74,9 +74,9 @@ public class Main {
                                 System.out.println();
                                 System.out.println("Курсы");
                                 System.out.println("1:");
-                                list.print(f->f.getCourse()==1);
+                                list.print(f -> f.getCourse() == 1);
                                 System.out.println("2:");
-                                list.print(f->f.getCourse()==2);
+                                list.print(f -> f.getCourse() == 2);
                                 break;
                             }
                             case "c": {
@@ -84,7 +84,7 @@ public class Main {
                                 list.print(f -> {
                                     Calendar calendar = Calendar.getInstance();
                                     calendar.setTime(f.getBirthday());
-                                    return calendar.get(Calendar.YEAR)>=year;
+                                    return calendar.get(Calendar.YEAR) >= year;
                                 });
                                 break;
                             }
@@ -96,8 +96,50 @@ public class Main {
                         }
                         break;
                     }
-                    case "3":{
+                    case "1.3": {
+                        Random random = new Random();
+                        AbiturientList list = new AbiturientList();
+                        list.add(new Abiturient(10, "Андрей", "Андреич", "Ананов",
+                                "1111111", "Омск", random.nextInt(10)));
+                        list.add(new Abiturient(9, "Борис", "Борисыч", "Бобриков",
+                                "2222222", "Омск", random.nextInt(10)));
+                        list.add(new Abiturient(8, "Владимр", "Владимирович", "Влаимиров",
+                                "1111111", "Омск", random.nextInt(10)));
+                        list.add(new Abiturient(7, "Генадий", "Генадьевич", "Генацвале",
+                                "1111111", "Омск", random.nextInt(10)));
+                        list.add(new Abiturient(6, "Дмитрий", "Дмитриевич", "Демитров",
+                                "1111111", "Омск", random.nextInt(10)));
+                        list.add(new Abiturient(5, "Егор", "Егорович", "Епифанцев",
+                                "1111111", "Омск", random.nextInt(10)));
+                        list.add(new Abiturient(4, "Ждан", "Жданович", "Жданов",
+                                "1111111", "Омск", random.nextInt(10)));
+                        list.add(new Abiturient(3, "Захар", "Захарович", "Захаров",
+                                "1111111", "Омск", random.nextInt(10)));
+                        list.add(new Abiturient(2, "Илья", "Илич", "Иличев",
+                                "1111111", "Омск", random.nextInt(10)));
+                        list.add(new Abiturient(1, "Кирилл", "Кириллович", "Кириллов",
+                                "1111111", "Омск", random.nextInt(10)));
+                        list.print(f -> true);
+
+                        String taskCh = scanner.next();
+                        switch (taskCh.toLowerCase()) {
+                            case "a": {
+                                int points = scanner.nextInt();
+                                list.print(f -> f.getPoints() <= points);
+                                break;
+                            }
+                            case "b": {
+                                int points = scanner.nextInt();
+                                list.print(f -> f.getPoints() > points);
+                                break;
+                            }
+                            case "c": {
+                                int n = scanner.nextInt();
+                                list.printAdmissionTable(n);
+                            }
+                        }
                         break;
+
                     }
                 }
 

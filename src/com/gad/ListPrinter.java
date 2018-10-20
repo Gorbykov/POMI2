@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 public class ListPrinter<T> {
 
-    private List<T> list = null;
+    protected List<T> list = null;
 
     public ListPrinter() {
         this.list = new ArrayList<>();

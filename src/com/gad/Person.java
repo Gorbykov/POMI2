@@ -82,6 +82,6 @@ public class Person implements Comparable {
 
     @Override
     public String toString() {
-        return String.format("%4d", id) + "| " + lastName + " " + firstName.charAt(0) + ". " + lastName.charAt(0) + ". ";
+        return String.format("id: %4d", id) + "| " + lastName + " " + firstName.charAt(0) + ". " + lastName.charAt(0) + ". ";
     }
 }
