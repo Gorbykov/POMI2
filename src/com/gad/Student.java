@@ -2,7 +2,7 @@ package com.gad;
 
 import java.util.Date;
 
-public class Student extends  PersonalInformation{
+public class Student extends Person {
 
     private String faculty = "FAC";
 
