@@ -1,6 +1,9 @@
 package com.gad;
 
-public class Stock implements Comparable{
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class Stock implements Comparable {
 
     private int unitPrice;
 
@@ -14,6 +17,10 @@ public class Stock implements Comparable{
         this.quantity = quantity;
     }
 
+    public static int getQuantityStatic(Stock... stocks) {
+        return Stream.of(stocks).mapToInt(f -> f.quantity).sum();
+    }
+
     public void setUnitPrice(int unitPrice) {
         this.unitPrice = unitPrice;
     }
@@ -22,8 +29,13 @@ public class Stock implements Comparable{
         this.quantity = quantity;
     }
 
-    public int getPrice(){
-        return unitPrice*quantity;
+    public int getPrice() {
+        return unitPrice * quantity;
+    }
+
+    public int getQuantity(Stock... stocks) {
+        Stock[] newArray = Stream.concat(Stream.of(this),Stream.of(stocks)).toArray(Stock[]::new);
+        return getQuantityStatic(newArray);
     }
 
     @Override
